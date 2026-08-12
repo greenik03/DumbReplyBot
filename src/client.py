@@ -11,7 +11,9 @@ class DRBClient:
         self.rand = Random()
         self.cli = Client()
         self.phrases = list() # TODO: invoke IOWorker for list of phrases
-        print(SYS_MESSAGE_PREFIX + f"Client for {self.handle} initialized.")
+        username = handle.split(".")[0]
+        self.name = f"CLI-{username}"
+        print(SYS_MESSAGE_PREFIX + f"Client for {self.handle} initialized: {self.name}")
 
     def login(self) -> Client | None:
         try:
@@ -23,5 +25,9 @@ class DRBClient:
             traceback.print_exc()
             return None
 
-    def create_post(self) -> str:
-        pass
+    def __str__(self) -> str:
+        return f"""{self.name}
+    Full handle: {self.handle}
+    DID: {self.cli.me.did}
+    Number of phrases: {len(self.phrases)}
+                """
