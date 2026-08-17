@@ -5,12 +5,12 @@ from atproto import Client, exceptions
 SYS_MESSAGE_PREFIX = "[Client]: "
 
 class DRBClient:
-    def __init__(self, handle: str, password: str):
+    def __init__(self, handle: str, password: str, phrases: list[str]):
         self.handle = handle
         self.password = password
         self.rand = Random()
         self.cli = Client()
-        self.phrases = list() # TODO: invoke IOWorker for list of phrases
+        self.phrases = phrases
         username = handle.split(".")[0]
         self.name = f"CLI-{username}"
         print(SYS_MESSAGE_PREFIX + f"Client for {self.handle} initialized: {self.name}")
