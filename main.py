@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 SHUTDOWN_BOT = False
 SYS_MESSAGE_PREFIX = "[Main]: "
+# add console commands here, then implement their functionality inside console_init()
 COMMANDS: dict[str, str] = {
     "home": "Print the latest post from home (following) timeline",
     "info": "Print client and listener info",
@@ -18,13 +19,13 @@ def help_msg() -> None:
     for name, desc in zip(COMMANDS.keys(), COMMANDS.values()):
         print(f"\t{name} - {desc}")
 
-def open_phrases_file() -> list[str]:
+def open_phrases_file() -> tuple[str]:
     try:
         phrases = src.io_worker.read_content()
     except PermissionError as e:
         print(e)
         print(SYS_MESSAGE_PREFIX + "Missing read permission for phrases file. Attempting to add permission...")
-        src.io_worker.grant_permissions()
+        src.io_worker.grant_permission()
         phrases = src.io_worker.read_content()
         print(SYS_MESSAGE_PREFIX + "Read permission for phrases file added.")
     return phrases
@@ -60,9 +61,9 @@ def main() -> None:
     load_dotenv()
     handle, password = os.getenv("HANDLE"), os.getenv("PASSWORD")
     phrases = open_phrases_file()
-    assert handle is not None
-    assert password is not None
-    assert len(phrases) > 0
+    assert handle is not None, "Empty variable HANDLE in .env!"
+    assert password is not None, "Empty variable PASSWORD in .env!"
+    assert len(phrases) > 0, "Phrases list is empty!"
     client = src.client.DRBClient(handle, password, phrases)
     cli = client.login() # only using this variable to validate login
 
