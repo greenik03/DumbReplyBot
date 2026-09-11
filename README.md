@@ -5,6 +5,7 @@ Powers [insert account link here].
 
 [//]: # (TODO: Remember to add account link)
 [//]: # (TODO: Add section for building/self-hosting and console commands)
+[//]: # (TODO: Add this: contributors will be held accountable for their code should they happen to use AI to assist them, as long as they have extensively tested the code to ensure it works as intended and it is clearly outlined how and where AI has assisted.)
 
 # !!! Bot is still WIP !!!
 

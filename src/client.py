@@ -26,13 +26,14 @@ class DRBClient:
             print(e)
             return None
 
-    def make_post(self, user_post_did: str):
+    def make_reply(self, user_post_did: str, user_post_uri: str):
         # TODO
         # user_post_did: the ID of the post in which the bot is tagged in
         # check if user_post_did exists first (in case it gets deleted in the time it takes for the bot to respond)
         # then, check if the user has any labels added by Bluesky (rude, impersonator, scammer, etc.)
         # additionally, check if the post has links or external embeds (i think Bluesky hates that)
         # if all those checks passed, grab a random phrase from the list and send a reply
+        print(SYS_MESSAGE_PREFIX + "Function called")
         pass
 
     def __str__(self) -> str:
