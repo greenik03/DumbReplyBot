@@ -34,7 +34,7 @@ class DRBListener:
                 print(SYS_MESSAGE_PREFIX + "No new tags in notifications.")
             else:
                 for notif in unread:
-                    self.cli.make_reply(notif.cid, notif.uri)
+                    self.cli.make_reply(notif.cid, notif.uri, notif.author.did)
                 unread.clear()
 
             print(SYS_MESSAGE_PREFIX + f"Notifications processed at {last_seen_time}")

@@ -26,15 +26,38 @@ class DRBClient:
             print(e)
             return None
 
-    def make_reply(self, user_post_did: str, user_post_uri: str):
-        # TODO
-        # user_post_did: the ID of the post in which the bot is tagged in
-        # check if user_post_did exists first (in case it gets deleted in the time it takes for the bot to respond)
-        # then, check if the user has any labels added by Bluesky (rude, impersonator, scammer, etc.)
-        # additionally, check if the post has links or external embeds (i think Bluesky hates that)
-        # if all those checks passed, grab a random phrase from the list and send a reply
-        print(SYS_MESSAGE_PREFIX + "Function called")
+    def is_user_labelled(self, user_did) -> bool:
         pass
+
+    def is_post_labelled(self, user_post_cid: str, user_post_uri: str) -> bool:
+        pass
+
+    def has_extembed_or_link(self, user_post_cid: str, user_post_uri: str) -> bool:
+        pass
+
+    # TODO: add additional check for blacklisted/whitelisted words
+
+    # TODO
+    def make_reply(self, user_post_cid: str, user_post_uri: str, user_did: str):
+        # check if user post exists first (in case it gets deleted in the time it takes for the bot to respond)
+        post = self.cli.app.bsky.feed.get_posts([user_post_uri]).posts[0]
+
+        # then, check if the user has any labels added by Bluesky (rude, impersonator, scammer, etc.)
+        # TODO: if self.is_user_labelled(user_did):
+        #     return
+
+        # or if the post has labels
+        # TODO: if self.is_post_labelled(user_post_cid, user_post_uri):
+        #     return
+
+        # additionally, check if the post has links or external embeds (i think Bluesky hates that)
+        # TODO: if self.has_extembed_or_link(user_post_cid, user_post_uri):
+        #     return
+
+        # if all those checks passed, grab a random phrase from the list and send a reply
+        text: str = self.rand.choice(self.phrases)
+        print(SYS_MESSAGE_PREFIX + post)
+        print(SYS_MESSAGE_PREFIX + text)
 
     def __str__(self) -> str:
         return f"""{self.name}

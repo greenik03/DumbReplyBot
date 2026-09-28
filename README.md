@@ -1,20 +1,22 @@
 # DumbReplyBot (DRB)
-A simple bot for AT Protocol (Bluesky) that replies to any post/reply in which it's tagged. \
+A simple bot for AT Protocol (Bluesky) that replies to any post/reply in which it's tagged/mentioned. \
 Uses the [atproto SDK](https://github.com/MarshalX/atproto). Written in Python 3.14. \
-Powers [insert account link here].
+Powers [rbtestbot.bsky.social](https://bsky.app/profile/rbtestbot.bsky.social).
 
-[//]: # (TODO: Remember to add account link)
-[//]: # (TODO: Add section for building/self-hosting and console commands)
-[//]: # (TODO: Add this: contributors will be held accountable for their code should they happen to use AI to assist them, as long as they have extensively tested the code to ensure it works as intended and it is clearly outlined how and where AI has assisted.)
+[//]: # (TODO: Change account link after handle change)
+[//]: # (TODO: Add section for building/self-hosting)
 
-# !!! Bot is still WIP !!!
+# Console commands
+The bot has a few commands you can give it in a terminal/command line while it's operating:
+- `info` - Prints client and listener info on screen.
+- `cache-reset` - Re-reads `phrases.txt` from the data folder and stores the phrases in memory.
+- `quit, stop, exit, logout` - Shut down the bot. Just `q` will also do the job.
 
-# Disclosure
-No AI was used to generate, test or analyze code. \
-The bot will analyze a user's profile when tagged to look for labels added by Bluesky (for scams, hate speech, harassment, etc.) to avoid suspension. Otherwise, no user data is being stored.
+# Data disclosure
+The bot will analyze a user's profile when tagged to look for labels added by Bluesky (for scams, hate speech, harassment, etc.) to avoid suspension. Other than that, no user data is being stored.
 
 # Contributing
-Issues and PRs are welcome. Contributions made entirely by AI will automatically be ignored. Contributors, if assisted by AI, are expected to take responsibility for their contributions.
+[See the contributing guidelines here](CONTRIBUTING.md) for more info.
 
 # License
-MIT
+[MIT](LICENSE)
